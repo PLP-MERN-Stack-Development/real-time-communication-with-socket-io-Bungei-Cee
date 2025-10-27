@@ -1,77 +1,101 @@
 # Real-Time Chat Application with Socket.io
 
-This assignment focuses on building a real-time chat application using Socket.io, implementing bidirectional communication between clients and server.
+A real-time chat app built with Node.js, Express, Socket.io and React.  
+Features: global & private messaging, multiple rooms, typing indicators, presence, notifications, and optional file sharing and read receipts.
 
-## Assignment Overview
+---
 
-You will build a chat application with the following features:
-1. Real-time messaging using Socket.io
-2. User authentication and presence
-3. Multiple chat rooms or private messaging
-4. Real-time notifications
-5. Advanced features like typing indicators and read receipts
-
-## Project Structure
-
-```
+## 🔧 Project structure
 socketio-chat/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # UI components
-│   │   ├── context/        # React context providers
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── pages/          # Page components
-│   │   ├── socket/         # Socket.io client setup
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Node.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Socket event handlers
-│   ├── models/             # Data models
-│   ├── socket/             # Socket.io server setup
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
-```
+├── client/ # React front-end
+│ ├── public/
+│ └── src/
+│ ├── components/
+│ ├── context/
+│ ├── hooks/
+│ ├── pages/
+│ ├── socket/
+│ └── App.jsx
+├── server/ # Node.js back-end
+│ ├── config/
+│ ├── controllers/
+│ ├── models/
+│ ├── socket/
+│ └── server.js
+└── README.md
 
-## Getting Started
+---
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week5-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+## 🚀 Quick start (local)
+Requirements: Node.js v18+, npm or yarn.
 
-## Files Included
+1. Clone your assignment repo:
 
-- `Week5-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Socket.io configuration templates
-  - Sample components for the chat interface
+```bash
+git clone https://github.com/<your-username>/real-time-communication-with-socket-io-Bungei-Cee.git
+cd real-time-communication-with-socket-io-Bungei-Cee
 
-## Requirements
+cd server
+npm install
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Modern web browser
-- Basic understanding of React and Express
+cd ../client
+npm install
 
-## Submission
+PORT=5000
+MONGO_URI=your_mongo_uri_if_using_db
+JWT_SECRET=changeme
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+PORT=3000
+REACT_APP_SOCKET_URL=http://localhost:5000
 
-1. Complete both the client and server portions of the application
-2. Implement the core chat functionality
-3. Add at least 3 advanced features
-4. Document your setup process and features in the README.md
-5. Include screenshots or GIFs of your working application
-6. Optional: Deploy your application and add the URLs to your README.md
+cd server
+npm run dev
 
-## Resources
+cd client
+npm run dev
+🧩 Features to implement (minimum)
 
-- [Socket.io Documentation](https://socket.io/docs/v4/)
-- [React Documentation](https://react.dev/)
-- [Express.js Documentation](https://expressjs.com/)
-- [Building a Chat Application with Socket.io](https://socket.io/get-started/chat) 
+Username-based authentication (or JWT)
+
+Global chat (everyone)
+
+Private messages (direct)
+
+Multiple rooms/channels
+
+Typing indicator
+
+Online/offline presence
+
+Notifications for joins/leaves and unread counts
+
+Advanced (pick ≥3):
+
+File/image sharing (uploads + URLs)
+
+Read receipts
+
+Message reactions
+
+Pagination & message history (MongoDB)
+
+Browser notifications & sound
+
+📁 Example API / Socket events
+
+Socket events (recommended):
+
+join — user joins with username
+
+message — send message { to?, room?, text, ts }
+
+typing — { isTyping }
+
+private-message — server -> recipient
+
+user-list — server -> all clients
+
+notification — server -> all clients
+
+message-read — acknowledge read
+
